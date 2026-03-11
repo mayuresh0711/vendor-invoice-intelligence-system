@@ -236,6 +236,22 @@ The application also displays **model confidence**.
 
 ---
 
+## Application Preview
+
+### Vendor Invoice Intelligence Portal
+
+![Application Home](images/app_home.png)
+
+### Freight Cost Prediction
+
+![Freight Prediction](images/freight_prediction.png)
+
+### Invoice Risk Flagging
+
+![Invoice Risk](images/invoice_risk.png)
+
+---
+
 # 🏗 Project Architecture
 
 ```
@@ -288,6 +304,11 @@ Vendor-invoice-intelligence-system
 ├── notebooks/
 │   ├── invoice_flagging.ipynb
 │   └── Predicting_Freight_Cost.ipynb
+│
+├── images/
+│   ├── app_home.png
+│   ├── freight_prediction.png
+│   └── invoice_risk.png
 │
 ├── app.py
 ├── requirements.txt
