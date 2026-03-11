@@ -3,6 +3,21 @@
 **AI-Driven Freight Cost Prediction & Invoice Risk Flagging**
 
 ---
+## 📌 Table of Contents
+
+- [Project Overview](#-project-overview)
+- [Business Objectives](#-business-objectives)
+- [Data Source](#-data-source)
+- [Exploratory Data Analysis](#-exploratory-data-analysis)
+- [Models Used](#-models-used)
+- [Evaluation Metrics](#-evaluation-metrics)
+- [Application](#-application)
+- [Application Preview](#application-preview)
+- [Project Architecture](#-project-architecture)
+- [Project Structure](#-project-structure)
+- [How to Run This Project](#-how-to-run-this-project)
+- [Author & Contact](#-author)
+---
 
 ## 📌 Project Overview
 
@@ -405,4 +420,4 @@ Skills:
 - Tableau
 - Data Analytics
 
-LinkedIn: **mayuresh-ahire**
+LinkedIn: https://www.linkedin.com/in/mayuresh-ahire-ab079b2a3/
