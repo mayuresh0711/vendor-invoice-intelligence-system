@@ -1,6 +1,30 @@
-# Vendor Invoice Intelligence System
+# 🚚 Vendor Invoice Intelligence System
 
 **AI-Driven Freight Cost Prediction & Invoice Risk Flagging**
+
+---
+
+## 🌐 Live Application
+
+Try the deployed application here:
+
+🔗 **Streamlit App:**  
+https://mayuresh0711-vendor-invoice-intelligence-system-app-sszyjb.streamlit.app/
+
+---
+
+## 🖥 Application Preview
+
+### Vendor Invoice Intelligence Portal
+
+![Application Home](images/app_home.png)
+
+This interactive machine learning application allows users to:
+
+- Predict expected **freight cost for vendor invoices**
+- Detect **high-risk invoices requiring manual approval**
+- View **model confidence scores**
+- Support **finance teams with automated invoice validation**
 
 ---
 ## 📌 Table of Contents
