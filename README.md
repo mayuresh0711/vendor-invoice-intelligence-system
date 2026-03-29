@@ -1,423 +1,212 @@
 # Vendor Invoice Intelligence System
 
-**AI-Driven Freight Cost Prediction & Invoice Risk Flagging**
+**AI-Powered Freight Cost Prediction & Invoice Risk Detection**
 
----
-## 📌 Table of Contents
-
-- [Project Overview](#-project-overview)
-- [Business Objectives](#-business-objectives)
-- [Data Source](#-data-source)
-- [Exploratory Data Analysis](#-exploratory-data-analysis)
-- [Models Used](#-models-used)
-- [Evaluation Metrics](#-evaluation-metrics)
-- [Application](#-application)
-- [Application Preview](#application-preview)
-- [Project Architecture](#-project-architecture)
-- [Project Structure](#-project-structure)
-- [How to Run This Project](#-how-to-run-this-project)
-- [Author & Contact](#-author)
----
-
-## 📌 Project Overview
-
-The **Vendor Invoice Intelligence System** is an end-to-end machine learning application that helps finance teams analyze vendor invoices and detect potential financial risks.
-
-The system performs two main tasks:
-
-1. **Freight Cost Prediction** – Estimate expected freight cost for vendor invoices.  
-2. **Invoice Risk Flagging** – Automatically identify invoices that may require manual approval due to abnormal patterns.
-
-The models are deployed through an **interactive Streamlit web application**.
-
-Business benefits:
-
-- Detect abnormal invoices early  
-- Reduce financial leakage  
-- Improve operational efficiency  
-- Support faster finance workflows  
+[![Live App](https://img.shields.io/badge/Live-Streamlit-FF4B4B)](https://mayuresh0711-vendor-invoice-intelligence-system-app-sszyjb.streamlit.app/)
+[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue)]()
 
 ---
 
-# 🎯 Business Objectives
+## 📌 Overview
 
-## 1️⃣ Freight Cost Prediction (Regression)
+This system helps finance teams automatically:
+1. **Predict freight costs** – Estimate fair shipping costs for vendor invoices
+2. **Flag risky invoices** – Detect anomalies and suspicious patterns
 
-**Goal:**  
-Predict expected freight cost based on invoice value.
-
-**Business Value**
-
-- Detect freight overcharging
-- Improve vendor negotiations
-- Improve cost forecasting
-
-Example:
-
-Invoice Value: **$18,500**  
-Predicted Freight: **$1,120**
-
-If the billed freight is significantly higher, the invoice may require investigation.
+Built with **Machine Learning** and deployed on **Streamlit**.
 
 ---
 
-## 2️⃣ Invoice Manual Approval Flagging (Classification)
+## 🎯 Business Problem
 
-**Goal:**  
-Automatically detect invoices that may contain anomalies and require manual review.
+Finance teams spend hours manually reviewing vendor invoices to detect:
+- **Freight overcharging** – Abnormally high shipping costs
+- **Invoice anomalies** – Mismatches between invoice and purchase orders
+- **Fraudulent patterns** – Suspicious quantity or pricing discrepancies
 
-The system flags invoices when unusual patterns appear such as:
-
-- Invoice amount mismatch with purchase totals
-- Unusual freight ratios
-- Suspicious quantity patterns
-
-Example:
-
-Invoice Amount: **$2,468**  
-Purchase Total: **$2,476**  
-Difference: **$8 → flagged**
-
-This helps finance teams **prioritize risky invoices** before payment.
+**This system automates that process**, enabling faster approvals and reducing financial leakage.
 
 ---
 
-# 📊 Data Source
+## 🔑 Key Features
 
-The project uses data stored in a **SQLite database (`inventory.db`)**.
-
-### Vendor Invoice Data
-
-Includes:
-
-- Invoice quantity
-- Invoice dollars
-- Freight cost
-- Invoice date
-- Purchase order reference
-
-### Purchase Data
-
-Includes:
-
-- Purchase quantities
-- Purchase dollars
-- Receiving delays
-- Brand counts
-
-Purchase data is aggregated to generate **invoice-level features**.
+- 🧠 **Regression Model** – Predicts freight costs with 97% accuracy
+- 🚨 **Classification Model** – Identifies risky invoices with 89% accuracy  
+- 🖥️ **Interactive Web App** – User-friendly interface for instant predictions
+- 📊 **Confidence Scores** – Model confidence level for each prediction
+- 🚀 **Deployed & Live** – Ready to use on Streamlit Cloud
 
 ---
 
-# 🔍 Exploratory Data Analysis
+## 🚀 Live Demo
 
-EDA was performed using **Jupyter notebooks**.
+**Try it here:** [https://mayuresh0711-vendor-invoice-intelligence-system-app-sszyjb.streamlit.app/](https://mayuresh0711-vendor-invoice-intelligence-system-app-sszyjb.streamlit.app/)
 
-Key insights:
+### Screenshots
 
-### Freight Patterns
-Freight costs strongly correlate with **invoice value**.
-
-### Invoice vs Purchase Difference
-
-Invoices where
-
-`|invoice_dollars - total_item_dollars| > 5`
-
-frequently required manual review.
-
-### Important Features
-
-- `invoice_quantity`
-- `invoice_dollars`
-- `freight`
-- `total_item_quantity`
-- `total_item_dollars`
-
----
-
-# 🧠 Models Used
-
-The system uses **two machine learning pipelines**.
-
----
-
-## Freight Cost Prediction
-
-Problem type: **Regression**
-
-Models trained:
-
-- Linear Regression
-- Decision Tree Regressor
-- Random Forest Regressor
-
-The best model is selected using **lowest MAE**.
-
-Saved model:
-
-`predict_freight_model.pkl`
-
----
-
-## Invoice Risk Flagging
-
-Problem type: **Binary Classification**
-
-Model used:
-
-**Random Forest Classifier**
-
-Saved artifacts:
-
-- `predict_flag_invoice.pkl`
-- `scaler.pkl`
-
----
-
-# 📈 Evaluation Metrics
-
-## Freight Prediction
-
-Metrics:
-
-- MAE
-- RMSE
-- R² Score
-
-Example results:
-
-Linear Regression Performance
-
-MAE : 24.11  
-RMSE : 124.72  
-R² : 96.99%
-
----
-
-## Invoice Risk Detection
-
-Metrics:
-
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-
-Example:
-
-Accuracy: **0.89**  
-F1 Score: **0.87**
-
----
-
-# 💻 Application
-
-The models are deployed through a **Streamlit web application**.
-
-The portal contains two modules.
-
----
-
-## 🚚 Freight Cost Prediction
-
-User inputs:
-
-- Invoice Quantity
-- Invoice Dollars
-
-Output:
-
-**Predicted Freight Cost**
-
----
-
-## ⚠ Invoice Risk Prediction
-
-User inputs:
-
-- Invoice Quantity
-- Invoice Dollars
-- Freight Cost
-- Total Item Quantity
-- Total Item Dollars
-
-Output:
-
-- **Safe for Auto Approval**
-- **Manual Approval Required**
-
-The application also displays **model confidence**.
-
----
-
-## Application Preview
-
-### Vendor Invoice Intelligence Portal
-
+**Homepage**
 ![Application Home](images/app_home.png)
 
-### Freight Cost Prediction
-
+**Freight Cost Prediction**
 ![Freight Prediction](images/freight_prediction.png)
 
-### Invoice Risk Flagging
-
+**Invoice Risk Flagging**
 ![Invoice Risk](images/invoice_risk.png)
 
 ---
 
-# 🏗 Project Architecture
+## 💡 How It Works
+
+### Model 1: Freight Cost Prediction (Regression)
+**Problem:** How do we know if a freight charge is fair?
+
+- **Input:** Invoice quantity & total amount
+- **Output:** Expected freight cost based on historical patterns
+- **Business Impact:** If actual freight is 30%+ higher than predicted, it may indicate overcharging
+- **Example:** Invoice of $18,500 → Predicted freight: $1,120 → If billed $1,500+, it's flagged
+
+### Model 2: Invoice Risk Flagging (Classification)  
+**Problem:** Which invoices need manual review before payment?
+
+- **Input:** Invoice quantity, amount, freight, total purchase details
+- **Output:** "Safe to Auto-Approve" OR "Requires Manual Review" with confidence score
+- **Business Impact:** Prioritizes high-risk invoices for auditor attention, reducing fraud/errors
+- **Detects:** Amount mismatches, unusual freight ratios, suspicious patterns
+- **Example:** Invoice $2,468 vs Purchase Total $2,476 → Large variance → Flagged
+
+---
+
+## 📊 Data & Training
+
+**Data Source:** SQLite database with vendor invoices and purchase order data
+
+**Features Used:**
+- Invoice quantity, amount, freight cost
+- Purchase order quantities and totals
+- Receiving performance metrics
+
+**Models:**
+- Freight prediction: Random Forest Regressor (tested Linear Regression & Decision Tree)
+- Risk flagging: Random Forest Classifier with feature scaling
+
+---
+
+## 📊 Model Performance
+
+| Model | Metric | Value |
+|-------|--------|-------|
+| **Freight Prediction** | MAE | 24.11 |
+| | R² Score | 96.99% |
+| **Risk Flagging** | Accuracy | 89% |
+| | F1-Score | 87% |
+
+---
+
+## 🏗️ Project Workflow
 
 ```
-Database
+1. DATA LOADING → SQLite database
    ↓
-Data Preprocessing
+2. PREPROCESSING → Handle missing values, feature engineering
    ↓
-Feature Engineering
+3. MODEL TRAINING → Regression & Classification models
    ↓
-Model Training
+4. EVALUATION → Test performance metrics
    ↓
-Model Evaluation
+5. SERIALIZATION → Save models as .pkl files
    ↓
-Model Serialization (PKL)
+6. INFERENCE API → predict_freight.py & predict_invoice_flag.py
    ↓
-Inference Layer
+7. STREAMLIT APP → Interactive user interface
    ↓
-Streamlit Web Application
+8. LIVE DEPLOYMENT → Streamlit Cloud
 ```
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 
 ```
-Vendor-invoice-intelligence-system
-│
 ├── Data/
-│   └── inventory.db
-│
+│   └── inventory.db                    # Source data (SQLite)
 ├── freight_cost_prediction/
 │   ├── data_preprocessing.py
 │   ├── modeling_evaluation.py
 │   ├── train.py
-│   └── models/
-│       └── predict_freight_model.pkl
-│
+│   └── models/predict_freight_model.pkl
 ├── invoice_flagging/
 │   ├── data_preprocessing.py
 │   ├── modeling_evaluation.py
 │   ├── train.py
-│   └── models/
-│       ├── predict_flag_invoice.pkl
-│       └── scaler.pkl
-│
+│   └── models/predict_flag_invoice.pkl
 ├── inference/
 │   ├── predict_freight.py
 │   └── predict_invoice_flag.py
-│
-├── notebooks/
-│   ├── invoice_flagging.ipynb
-│   └── Predicting_Freight_Cost.ipynb
-│
-├── images/
-│   ├── app_home.png
-│   ├── freight_prediction.png
-│   └── invoice_risk.png
-│
-├── app.py
-├── requirements.txt
-└── README.md
+├── notebooks/                          # Jupyter exploration notebooks
+├── app.py                              # Streamlit application
+└── requirements.txt
 ```
 
 ---
 
-# ▶ How to Run This Project
+## ⚡ Quick Start
 
-## 1️⃣ Clone repository
-
-```
-git clone https://github.com/yourusername/vendor-invoice-intelligence-system.git
+### 1. Clone Repository
+```bash
+git clone https://github.com/mayuresh0711/vendor-invoice-intelligence-system.git
 cd vendor-invoice-intelligence-system
 ```
 
----
-
-## 2️⃣ Create virtual environment
-
-```
+### 2. Setup Environment
+```bash
 python -m venv venv
-```
 
-Activate environment
-
-Windows:
-
-```
+# Windows:
 venv\Scripts\activate
-```
 
-Mac/Linux:
-
-```
+# macOS/Linux:
 source venv/bin/activate
 ```
 
----
-
-## 3️⃣ Install dependencies
-
-```
+### 3. Install Dependencies
+```bash
 pip install -r requirements.txt
 ```
 
----
-
-## 4️⃣ Train models
-
-```
+### 4. Train Models (Optional)
+```bash
 python freight_cost_prediction/train.py
-```
-
-```
 python invoice_flagging/train.py
 ```
 
-This generates:
-
-- `predict_freight_model.pkl`
-- `predict_flag_invoice.pkl`
-- `scaler.pkl`
-
----
-
-## 5️⃣ Run the application
-
-```
+### 5. Run Application
+```bash
 streamlit run app.py
 ```
 
-Application will run at:
-
-```
-http://localhost:8501
-```
+Open: **http://localhost:8501**
 
 ---
 
-# 👤 Author
+## 🛠️ Technologies Used
 
-**Mayuresh Ahire**
+- **Python** – Core language
+- **scikit-learn** – Machine learning
+- **Pandas & NumPy** – Data manipulation
+- **Streamlit** – Web application
+- **SQLite** – Database
 
-Data Analyst | Machine Learning | Business Intelligence
+---
 
-Skills:
+## 📞 Contact
 
-- Python
-- SQL
-- Machine Learning
-- Power BI
-- Tableau
-- Data Analytics
+**Mayuresh Ahire**  
+Data Analyst | Machine Learning
 
-LinkedIn: https://www.linkedin.com/in/mayuresh-ahire-ab079b2a3/
+- 🔗 **LinkedIn:** [linkedin.com/in/mayuresh-ahire-ab079b2a3/](https://www.linkedin.com/in/mayuresh-ahire-ab079b2a3/)
+- 🐙 **GitHub:** [github.com/mayuresh0711](https://github.com/mayuresh0711)
+- 📧 **Email:** ahiremayuresh4@gmail.com
+
+---
+
+**Happy to connect! Feel free to reach out with feedback or collaboration ideas.** 🚀
